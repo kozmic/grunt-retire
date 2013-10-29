@@ -27,16 +27,30 @@ _Run this task with the `grunt retire` command._
 
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 ### Options
+`verbose: true/false`, default is `true`.
 
 This task primarily delegates to [Retire][], so please consider the [Retire documentation][] as required reading for advanced configuration.
 
 [Retire]: https://github.com/bekk/retire.js
 
-Scan node dependencies example
+## Scan node dependencies example
+TODO
 
-Scan javascript files only
+## Scan javascript files only
+```js
+    retire: {
+      files: ['app/src/*'], /** Scan js-files in app/src/ directory. **/
+      options: {
+        jspath: 'dummy'
+      }
+    }
+```
 
-limit node scan to packages where parent is mentioned in package.json (ignore node_modules)
+Running ```grunt retire``` will scan files in app/src/ for vulnerabilities.
+
+
+## Limit node scan to packages where parent is mentioned in package.json (ignore node_modules)
+TODO
 
 Setting ```debug: true``` will log identified files
 

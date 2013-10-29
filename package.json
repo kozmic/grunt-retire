@@ -33,7 +33,13 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt": "~0.4.1",
-    "retire": "~0.1.1"
+    "retire": "~0.1.1",
+    "underscore": "1.4.x",
+    "commander": "1.1.x",
+    "npm": "1.2.x",
+    "findit": "0.1.2",
+    "events": "0.5.0",
+    "crypto": "0.0.3"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"
