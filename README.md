@@ -1,4 +1,4 @@
-# grunt-contrib-uglify v0.2.5 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
+# grunt-retire v0.1.0
 
 > Grunt task for retire. Scanner detecting the use of JavaScript libraries with known vulnerabilites.
 
