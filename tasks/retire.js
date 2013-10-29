@@ -58,31 +58,29 @@ module.exports = function (grunt) {
       return hasVulnerabilities;
     }
 
-    if (options.jspath) {
-      repo.loadrepository('http://localhost:8000/repository/jsrepository.json').on('done', function (repo) {
-        files.forEach(function (fileObj) {
-          // The source files to be concatenated. The "nonull" option is used
-          // to retain invalid files/patterns so they can be warned about.
-          grunt.file.expand({nonull: true}, fileObj.src).forEach(function (filepath) {
-            // Warn if a source file/pattern was invalid.
-            if (!grunt.file.exists(filepath)) {
-              grunt.log.error('Source file "' + filepath + '" not found.');
-            } else if(grunt.file.isFile(filepath)) {
-              //log('Checking: ' + filepath);
-              if (scanJsFile(filepath, repo)) {
+    repo.loadrepository('http://localhost:8000/repository/jsrepository.json').on('done', function (repo) {
+      files.forEach(function (fileObj) {
+        // The source files to be concatenated. The "nonull" option is used
+        // to retain invalid files/patterns so they can be warned about.
+        grunt.file.expand({nonull: true}, fileObj.src).forEach(function (filepath) {
+          // Warn if a source file/pattern was invalid.
+          if (!grunt.file.exists(filepath)) {
+            grunt.log.error('Source file "' + filepath + '" not found.');
+          } else if (grunt.file.isFile(filepath)) {
+            log('Checking: ' + filepath);
+            if (scanJsFile(filepath, repo)) {
 
-                if(!vulnsFound ) { // Log first time there is a vulnerable file.
-                  grunt.log.error('Vulnerabilities found! Please review log for details.');
-                }
-                vulnsFound = true;
+              if (!vulnsFound) { // Log first time there is a vulnerable file.
+                grunt.log.error('Vulnerabilities found! Please review log for details.');
               }
+              vulnsFound = true;
             }
-          });
-
-          done(!vulnsFound);
+          }
         });
+
+        done(!vulnsFound);
       });
-    }
+    });
 
   });
 

@@ -41,7 +41,6 @@ TODO
     retire: {
       files: ['app/src/*'], /** Scan js-files in app/src/ directory. **/
       options: {
-        jspath: 'dummy'
       }
     }
 ```
@@ -54,6 +53,40 @@ TODO
 
 Setting ```debug: true``` will log identified files
 
+
+## Example output
+
+
+## No vulnerabilities
+```
+➜  grunt-retire git:(master) ✗ grunt
+Running "jshint:all" (jshint) task
+>> 2 files lint free.
+
+Running "retire:all" (retire) task
+Downloading http://localhost:8000/repository/jsrepository.json ...
+Checking: Gruntfile.js
+
+Done, without errors.
+```
+## Found 1 vulnerability in jquery-1.6.js
+```
+➜  grunt-retire git:(master) ✗ grunt
+Running "jshint:all" (jshint) task
+>> 2 files lint free.
+
+Running "retire:all" (retire) task
+Downloading http://localhost:8000/repository/jsrepository.json ...
+Checking: test-files/dojo.js
+Checking: test-files/jquery-1.6.js
+>> test-files/jquery-1.6.js
+>> ↳ jquery 1.6
+>> Vulnerabilities found! Please review log for details.
+Checking: test-files/safe.js
+Warning: Task "retire:all" failed. Use --force to continue.
+
+Aborted due to warnings.
+```
 ## Release History
 
  * 2013-10-30   v0.1.0   First version.

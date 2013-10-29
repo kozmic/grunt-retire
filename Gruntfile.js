@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     retire: {
       files: ['test-files/*'],
       options: {
-        jspath: 'dummy'
+
       }
     }
   });
