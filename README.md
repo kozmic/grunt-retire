@@ -1,50 +1,45 @@
-Node Boilerplate Version 2
-==========================
-*Requires Node v0.6.6 (or newer)*
-node-boilerplate takes html-boilerplate, express, connect, jade and Socket.IO and organizes them into a ready to use website project. It's a fast way to get working on your Node website without having to worry about the setup. It takes care of all the boring parts, like setting up your views, 404 page, 500 page, getting the modules organized, etc... 
+# grunt-contrib-uglify v0.2.5 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-uglify.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-uglify)
 
-Node Boilerplate has 4 goals:
-
-1. To end the repetition involved with starting a new Node website project
-2. To never install anything outside of the project directory (For easier production deployment)
-3. To make it easy to install additional modules within the project directory
-4. To enable easy upgrade or freezing of project dependencies  
-(These goals are much easier to meet now that node includes the node_modules convention)
-
-To start a project:
-		
-		git clone git://github.com/robrighter/node-boilerplate.git mynewproject
-		cd mynewproject
-		./initproject.sh
-This will copy down all of the boilerplate files, organize them appropriately and init a fresh new git repository within which you can build your next big thing.
+> Grunt task for retire. Scanner detecting the use of JavaScript libraries with known vulnerabilites.
 
 
-To run the boilerplate template app:
 
-		node server.js
+## Getting Started
+This plugin requires Grunt `~0.4.0`
 
-Go to http://0.0.0.0:8081 and click on the send message link to see socket.io in action.
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+```shell
+npm install grunt-retire --save-dev
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-retire');
+```
 
 
-Additional Features:
 
-1. Creates a package.json file consistent with associated best practices (http://blog.nodejitsu.com/package-dependencies-done-right)
-2. Adds .gitignore for the node_modules directory
-3. Includes 404 page and associated route
-4. Includes 500 page
 
-To add additional modules:
+## Retire task
+_Run this task with the `grunt retire` command._
 
-Update the package.json file to include new module dependencies and run 'npm install'.
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
+### Options
 
-**If you have a different set of default modules that you like to use, the structure is setup such that you can fork the project and replace the module dependencies outlined in the ./templates/apps/package.json file to best fit your needs and the initproject.sh script will initialize projects with your new set of modules.**
+This task primarily delegates to [Retire][], so please consider the [Retire documentation][] as required reading for advanced configuration.
 
-Deployment
-===============
+[Retire]: https://github.com/bekk/retire.js
 
-node-boilerplate is setup to be easily deployed on a Joyent Node SmartMachine. This means that:
+Scan node dependencies example
 
-1. The version of Node is defined in config.json and in package.json
-2. The main script to run is server.js
-3. The web server port is pulled from process.env.PORT 
+Scan javascript files only
 
+limit node scan to packages where parent is mentioned in package.json (ignore node_modules)
+
+Setting ```debug: true``` will log identified files
+
+## Release History
+
+ * 2013-10-30   v0.1.0   First version.
