@@ -52,7 +52,7 @@ Example configuration below shows default option values and the correct syntax t
 
 `packageOnly: true/false`, default is `true`. Only scan only dependencies in package.json, skip dependencies to dependencies.
 
-`nodeOnly`: true/false`, default is `false`. Only scan Node dependencies in package.json, skip Javascript-file scanning.
+`nodeOnly: true/false`, default is `false`. Only scan Node dependencies in package.json, skip Javascript-file scanning.
 
 `jsOnly`: true/false`, default is `false`. Only scan Javascript-files, skip Node dependencies in package.json.
 
