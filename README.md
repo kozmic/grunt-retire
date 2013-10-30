@@ -25,6 +25,11 @@ grunt.loadNpmTasks('grunt-retire');
 ## Retire task
 _Run this task with the `grunt retire` command._
 
+This task primarily delegates to [Retire][], so please consider the [Retire documentation][] as required reading for advanced configuration.
+
+[Retire]: https://github.com/bekk/retire.js
+[Retire documentation]: https://github.com/bekk/retire.js
+
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 ### Available options
 Example configuration below shows default option values and the correct syntax to use if you want to override any of them. If no options are provided, the default values as shown below are used.
@@ -44,27 +49,16 @@ Example configuration below shows default option values and the correct syntax t
 ```
 
 `verbose: true/false`, default is `true`. More verbose output (grunt -d may also be used for even more debug output).
+
 `packageOnly: true/false`, default is `true`. Only scan only dependencies in package.json, skip dependencies to dependencies.
+
 `nodeOnly`: true/false`, default is `false`. Only scan Node dependencies in package.json, skip Javascript-file scanning.
+
 `jsOnly`: true/false`, default is `false`. Only scan Javascript-files, skip Node dependencies in package.json.
+
 `jsRepository: String`, default is `https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json`. JSON file which specifies where to retrieve Javascript vulnerability database.
+
 `nodeRepository: String`, default is `https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json`. JSON file which specifies where to retrieve Node vulnerability database.
-
-
-This task primarily delegates to [Retire][], so please consider the [Retire documentation][] as required reading for advanced configuration.
-
-[Retire]: https://github.com/bekk/retire.js
-[Retire documentation]: https://github.com/bekk/retire.js
-
-## Scan node dependencies example
-```js
-    retire: {
-      options: {
-         nodeOnly: true,
-      }
-    }
-```
-Running ```grunt retire``` will all dependencies specified under `dependencies` in `package.json`.
 
 
 ## Scan javascript files only
@@ -77,7 +71,17 @@ Running ```grunt retire``` will all dependencies specified under `dependencies` 
     }
 ```
 
-Running ```grunt retire``` will scan files in app/src/ for vulnerabilities.
+Running ```grunt retire``` will scan files in app/src/ for vulnerable libraries.
+
+## Scan node dependencies example
+```js
+    retire: {
+      options: {
+         nodeOnly: true,
+      }
+    }
+```
+Running ```grunt retire``` will scan all dependencies specified under `dependencies` in `package.json` for vulnerable libraries.
 
 
 ## Example output with one vulnerability found in jquery-1.6.js:
