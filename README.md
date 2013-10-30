@@ -66,6 +66,7 @@ This task primarily delegates to [Retire][], so please consider the [Retire docu
 ```
 Running ```grunt retire``` will all dependencies specified under `dependencies` in `package.json`.
 
+
 ## Scan javascript files only
 ```js
     retire: {
@@ -79,20 +80,8 @@ Running ```grunt retire``` will all dependencies specified under `dependencies` 
 Running ```grunt retire``` will scan files in app/src/ for vulnerabilities.
 
 
-## Example output
+## Example output with one vulnerability found in jquery-1.6.js:
 
-
-## No vulnerabilities
-```
-➜  grunt-retire git:(master) ✗ grunt retire
-Running "retire:jsPath" (retire) task
-JS repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json
-Node repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json
-No vulnerabilities found.
-
-Done, without errors.
-```
-## Found 1 vulnerability in jquery-1.6.js
 ```
 ➜  grunt-retire git:(master) ✗ grunt retire
 Running "retire:jsPath" (retire) task
@@ -102,7 +91,20 @@ JS repository loaded from: https://raw.github.com/bekk/retire.js/master/reposito
 Node repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json
 ```
 
-## Found 1 vulnerability in
+
+
+## Example output when no vulnerabilities is found
+```
+➜  grunt-retire git:(master) ✗ grunt retire
+Running "retire:jsPath" (retire) task
+JS repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json
+Node repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json
+No vulnerabilities found.
+
+Done, without errors.
+```
+
+
 ## Release History
 
  * 2013-10-30   v0.1.0   First version.
