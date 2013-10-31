@@ -21,7 +21,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "devDependencies": {
+  "dependencies" : {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
@@ -42,5 +42,11 @@
     "gruntplugin",
     "retire",
     "security"
+  ],
+  "contributors": [
+    {
+      "name": "Alexander Vassbotn Røyne-Helgesen",
+      "email" : "alexander@phun-ky.net"
+    }
   ]
 }
