@@ -35,7 +35,7 @@ module.exports = function (grunt) {
 
       grunt.event.once('retire-js-repo', function() {
          filesSrc.forEach(function(filepath) {
-            if(grunt.file.exists(filepath) && filepath.match(/\.js$/)) {
+            if(grunt.file.exists(filepath) && filepath.match(/\.js$/) && grunt.file.isFile(filepath)) {
                if(options.verbose) {
                   grunt.log.writeln('Checking:', filepath);
                }
