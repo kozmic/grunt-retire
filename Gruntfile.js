@@ -15,12 +15,11 @@ module.exports = function (grunt) {
 
       // Run the task to smoketest it
       retire: {
-         jsPath: ['test-files/*'],
+         js: ['test-files/*'],
+         node: ['.'],
          options: {
             verbose: true,
             packageOnly: true, /* package:false is not implemented! */
-            nodeOnly: false,
-            jsOnly: false,
             jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
             nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'
          }
