@@ -1,6 +1,6 @@
-# grunt-retire v0.1.0
+# grunt-retire
 
-> Grunt task for [retire.js](https://github.com/bekk/retire.js). Scanner detecting the use of JavaScript libraries with known vulnerabilites.
+Grunt task for [retire.js](https://github.com/bekk/retire.js). Scanner detecting the use of JavaScript libraries with known vulnerabilites.
 
 
 
