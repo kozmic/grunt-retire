@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       resolve = require('retire/lib/resolve'),
       scanner = require('retire/lib/scanner'),
       fs      = require('fs'),
-      request = require('request'),
+      req     = require('request'),
       async = require('async');
 
    grunt.registerMultiTask('retire', 'Scanner detecting the use of JavaScript libraries with known vulnerabilites.', function () {
@@ -17,7 +17,8 @@ module.exports = function (grunt) {
       var nodeRepo = null;
       var vulnsFound = false;
       var filesSrc = this.filesSrc;
-
+      var request = req;
+      
       // Merge task-specific and/or target-specific options with these defaults.
       var options = this.options({
          verbose: true,
@@ -25,6 +26,10 @@ module.exports = function (grunt) {
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
          nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'
       });
+      if (options.proxy) {
+         request = request.defaults({'proxy' : options.proxy})
+         grunt.log.writeln('Using proxy:', options.proxy);
+      }
 
 
       // log (verbose) options before hooking in the reporter
@@ -68,16 +73,16 @@ module.exports = function (grunt) {
       });
 
       grunt.event.once('retire-load-js', function() {
+         grunt.log.writeln('Downloading JS repository from: ' + options.jsRepository + " ...");
          request.get(options.jsRepository, function (e, r, jsRepResp) {
-            grunt.log.writeln('JS repository loaded from:', options.jsRepository);
             jsRepo = JSON.parse(retire.replaceVersion(jsRepResp));
             grunt.event.emit('retire-js-repo');
          });
       });
 
       grunt.event.once('retire-load-node', function() {
+         grunt.log.writeln('Downloading node repository from: ' + options.nodeRepository + " ...");
          request.get(options.nodeRepository, function (e, r, nodeRepResp) {
-            grunt.log.writeln('Node repository loaded from:', options.nodeRepository);
             nodeRepo = JSON.parse(retire.replaceVersion(nodeRepResp));
             grunt.event.emit('retire-node-scan', filesSrc);
          });

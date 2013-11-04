@@ -40,6 +40,7 @@ Example configuration below shows default option values and the correct syntax t
       js: ['app/src/*.js'], /** Which js-files to scan. **/
       node: ['node'], /** Which node directories to scan (containing package.json). **/
       options: {
+         proxy: 'http://something.something:8080',
          verbose: true,
          packageOnly: true, /* Note! package:false is not yet implemented in grunt plugin, only in node version of retire. */
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
@@ -47,6 +48,8 @@ Example configuration below shows default option values and the correct syntax t
       }
     }
 ```
+
+`proxy: url`, proxy (supports basic auth).
 
 `verbose: true/false`, default is `true`. More verbose output (grunt -d may also be used for even more debug output).
 
