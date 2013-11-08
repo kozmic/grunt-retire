@@ -38,6 +38,11 @@ module.exports = function (grunt) {
       scanner.registerWarnLogger(grunt.log.error);
       scanner.registerInfoLogger(grunt.log.writeln);
 
+      // required to throw proper grunt error
+      scanner.on('vulnerable-dependency-found', function(e) {
+          vulnsFound = true;
+      });
+
       grunt.event.once('retire-js-repo', function() {
          filesSrc.forEach(function(filepath) {
             if(grunt.file.exists(filepath) && filepath.match(/\.js$/) && grunt.file.isFile(filepath)) {
