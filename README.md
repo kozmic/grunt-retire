@@ -73,8 +73,8 @@ Running ```grunt retire``` will scan files in app/src/ for vulnerable libraries.
 
 ## Scan node dependencies example
 ```js
-    node: ['module/'], /** Scan node project in directory module/. **/
     retire: {
+      node: ['module/'], /** Scan node project in directory module/. Should be ['.'] for normal projects **/
       options: {
          nodeOnly: true,
       }
