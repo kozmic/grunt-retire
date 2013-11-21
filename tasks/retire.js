@@ -24,12 +24,9 @@ module.exports = function (grunt) {
          verbose: true,
          packageOnly: true, 
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
-         nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'
+         nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
+         logger: grunt.log.writeln
       });
-      if (options.proxy) {
-         request = request.defaults({'proxy' : options.proxy})
-         grunt.log.writeln('Using proxy:', options.proxy);
-      }
 
 
       // log (verbose) options before hooking in the reporter
@@ -58,7 +55,7 @@ module.exports = function (grunt) {
       });
 
       grunt.event.on('retire-node-scan', function(filesSrc) {
-         if (filesSrc.length == 0) {
+         if (filesSrc.length === 0) {
             grunt.event.emit('retire-done');
             return;
          }
@@ -78,17 +75,15 @@ module.exports = function (grunt) {
       });
 
       grunt.event.once('retire-load-js', function() {
-         grunt.log.writeln('Downloading JS repository from: ' + options.jsRepository + " ...");
-         request.get(options.jsRepository, function (e, r, jsRepResp) {
-            jsRepo = JSON.parse(retire.replaceVersion(jsRepResp));
+         repo.loadrepository(options.jsRepository, options).on('done', function(repo) {
+            jsRepo = repo;
             grunt.event.emit('retire-js-repo');
          });
       });
 
       grunt.event.once('retire-load-node', function() {
-         grunt.log.writeln('Downloading node repository from: ' + options.nodeRepository + " ...");
-         request.get(options.nodeRepository, function (e, r, nodeRepResp) {
-            nodeRepo = JSON.parse(retire.replaceVersion(nodeRepResp));
+         repo.loadrepository(options.jsRepository, options).on('done', function(repo) {
+            nodeRepo = repo;
             grunt.event.emit('retire-node-scan', filesSrc);
          });
       });

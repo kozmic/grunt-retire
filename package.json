@@ -1,7 +1,7 @@
 {
   "name": "grunt-retire",
   "description": "Grunt plugin for retire.",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "homepage": "https://github.com/bekk/grunt-retire",
   "author": {
     "name": "Ståle Pettersen",
@@ -26,7 +26,7 @@
     "grunt-contrib-jshint": "~0.7.1",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "0.2.x", 
-    "retire": "~0.1.13",
+    "retire": "~0.1.15",
     "async": "~0.2.9",
     "request": "~2.27.0"
   },
