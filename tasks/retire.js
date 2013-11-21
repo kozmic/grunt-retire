@@ -8,8 +8,10 @@ module.exports = function (grunt) {
       resolve = require('retire/lib/resolve'),
       scanner = require('retire/lib/scanner'),
       fs      = require('fs'),
+      tmp     = require('tmp'),
+      path    = require('path'),
       req     = require('request'),
-      async = require('async');
+      async   = require('async');
 
    grunt.registerMultiTask('retire', 'Scanner detecting the use of JavaScript libraries with known vulnerabilites.', function () {
       var done = this.async();
@@ -28,6 +30,7 @@ module.exports = function (grunt) {
          logger: grunt.log.writeln
       });
 
+      options.cachedir = path.resolve(tmp.tmpdir, '.retire-cache/');
 
       // log (verbose) options before hooking in the reporter
       grunt.verbose.writeflags(options, 'Options');
@@ -82,7 +85,7 @@ module.exports = function (grunt) {
       });
 
       grunt.event.once('retire-load-node', function() {
-         repo.loadrepository(options.jsRepository, options).on('done', function(repo) {
+         repo.loadrepository(options.nodeRepository, options).on('done', function(repo) {
             nodeRepo = repo;
             grunt.event.emit('retire-node-scan', filesSrc);
          });
