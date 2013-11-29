@@ -30,7 +30,9 @@ module.exports = function (grunt) {
          logger: grunt.log.writeln
       });
 
-      options.cachedir = path.resolve(tmp.tmpdir, '.retire-cache/');
+      if (!options.nocache) {
+         options.cachedir = path.resolve(tmp.tmpdir, '.retire-cache/');
+      }
 
       // log (verbose) options before hooking in the reporter
       grunt.verbose.writeflags(options, 'Options');
