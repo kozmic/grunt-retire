@@ -27,18 +27,20 @@ module.exports = function (grunt) {
          packageOnly: true, 
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
          nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
-         logger: grunt.log.writeln
+         logger: grunt.log.writeln,
+         warnlogger: grunt.log.error,
       });
 
       if (!options.nocache) {
          options.cachedir = path.resolve(tmp.tmpdir, '.retire-cache/');
       }
+      var ignores = options.ignore ? options.ignore.split(',') : [];
+      options.ignore = [];
+      ignores.forEach(function(e) { options.ignore.push(e); });
+      console.log(JSON.stringify(options.ignore));
 
       // log (verbose) options before hooking in the reporter
       grunt.verbose.writeflags(options, 'Options');
-
-      scanner.registerWarnLogger(grunt.log.error);
-      scanner.registerInfoLogger(grunt.log.writeln);
 
       // required to throw proper grunt error
       scanner.on('vulnerable-dependency-found', function(e) {

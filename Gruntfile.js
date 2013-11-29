@@ -21,7 +21,7 @@ module.exports = function (grunt) {
             verbose: true,
             packageOnly: true, /* package:false is not implemented! */
             jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
-            nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'
+            nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'            
          }
       }
    });

@@ -44,7 +44,8 @@ Example configuration below shows default option values and the correct syntax t
          verbose: true,
          packageOnly: true, /* Note! package:false is not yet implemented in grunt plugin, only in node version of retire. */
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
-         nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'
+         nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
+         ignore: 'documents,java'
       }
     }
 ```
@@ -58,6 +59,8 @@ Example configuration below shows default option values and the correct syntax t
 `jsRepository: String`, default is `https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json`. JSON file which specifies where to retrieve Javascript vulnerability database.
 
 `nodeRepository: String`, default is `https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json`. JSON file which specifies where to retrieve Node vulnerability database.
+
+`ignore: String`, default is empty. Paths to ignore when scanning for JavaScript files.
 
 
 ## Scan javascript files only
