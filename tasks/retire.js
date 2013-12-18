@@ -6,6 +6,7 @@ module.exports = function (grunt) {
    var retire = require('retire/lib/retire'),
       repo    = require('retire/lib/repo'),
       resolve = require('retire/lib/resolve'),
+      log     = require('retire/lib/utils').log,
       scanner = require('retire/lib/scanner'),
       fs      = require('fs'),
       tmp     = require('tmp'),
@@ -30,6 +31,7 @@ module.exports = function (grunt) {
          logger: grunt.log.writeln,
          warnlogger: grunt.log.error,
       });
+      var logger = log(options);
 
       if (!options.nocache) {
          options.cachedir = path.resolve(tmp.tmpdir, '.retire-cache/');
@@ -37,7 +39,7 @@ module.exports = function (grunt) {
       var ignores = options.ignore ? options.ignore.split(',') : [];
       options.ignore = [];
       ignores.forEach(function(e) { options.ignore.push(e); });
-      console.log(JSON.stringify(options.ignore));
+      logger.verbose("Ignoring " + JSON.stringify(options.ignore));
 
       // log (verbose) options before hooking in the reporter
       grunt.verbose.writeflags(options, 'Options');
