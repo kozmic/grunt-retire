@@ -9,9 +9,9 @@ module.exports = function (grunt) {
       log     = require('retire/lib/utils').log,
       scanner = require('retire/lib/scanner'),
       fs      = require('fs'),
-      tmp     = require('tmp'),
       path    = require('path'),
       req     = require('request'),
+      os      = require('os'),
       async   = require('async');
 
    grunt.registerMultiTask('retire', 'Scanner detecting the use of JavaScript libraries with known vulnerabilites.', function () {
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
       var logger = log(options);
 
       if (!options.nocache) {
-         options.cachedir = path.resolve(tmp.tmpdir, '.retire-cache/');
+         options.cachedir = path.resolve(os.tmpdir(), '.retire-cache/');
       }
       var ignores = options.ignore ? options.ignore.split(',') : [];
       options.ignore = [];
