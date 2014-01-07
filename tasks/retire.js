@@ -74,7 +74,7 @@ module.exports = function (grunt) {
                grunt.log.writeln('Checking:', filepath);
             }              
             resolve.getNodeDependencies(filepath).on('done', function(dependencies) {
-               scanner.scanDependencies(dependencies, nodeRepo);
+               scanner.scanDependencies(dependencies, nodeRepo, options);
                grunt.event.emit('retire-node-scan', filesSrc.slice(1));        
            });
          } else {
