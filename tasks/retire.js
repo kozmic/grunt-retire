@@ -48,8 +48,18 @@ module.exports = function (grunt) {
       scanner.on('vulnerable-dependency-found', function(e) {
           vulnsFound = true;
       });
+      var events = [];
+      function once(name, fun) {
+         events.push(name);
+         grunt.event.once(name, fun);
+      }
+      function on(name, fun) {
+         events.push(name);
+         grunt.event.on(name, fun);
+      }
 
-      grunt.event.once('retire-js-repo', function() {
+
+      once('retire-js-repo', function() {
          filesSrc.forEach(function(filepath) {
             if(grunt.file.exists(filepath) && filepath.match(/\.js$/) && grunt.file.isFile(filepath)) {
                if(options.verbose) {
@@ -63,7 +73,7 @@ module.exports = function (grunt) {
          grunt.event.emit('retire-done');        
       });
 
-      grunt.event.on('retire-node-scan', function(filesSrc) {
+      once('retire-node-scan', function(filesSrc) {
          if (filesSrc.length === 0) {
             grunt.event.emit('retire-done');
             return;
@@ -83,24 +93,28 @@ module.exports = function (grunt) {
          }
       });
 
-      grunt.event.once('retire-load-js', function() {
+      once('retire-load-js', function() {
          repo.loadrepository(options.jsRepository, options).on('done', function(repo) {
             jsRepo = repo;
             grunt.event.emit('retire-js-repo');
          });
       });
 
-      grunt.event.once('retire-load-node', function() {
+      once('retire-load-node', function() {
          repo.loadrepository(options.nodeRepository, options).on('done', function(repo) {
             nodeRepo = repo;
             grunt.event.emit('retire-node-scan', filesSrc);
          });
       });
 
-      grunt.event.once('retire-done', function() {
+      once('retire-done', function() {
          if(!vulnsFound){
             grunt.log.writeln("No vulnerabilities found.");
          }
+         events.forEach(function(e) {
+            grunt.event.removeAllListeners(e);
+         });
+
          done(!vulnsFound);
       });
 

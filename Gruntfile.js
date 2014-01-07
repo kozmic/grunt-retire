@@ -15,8 +15,8 @@ module.exports = function (grunt) {
 
       // Run the task to smoketest it
       retire: {
-         js: ['test-files/**/*.js'],
          node: ['test-files/**'],
+         js: ['test-files/**/*.js'],
          options: {
             verbose: true,
             packageOnly: true, /* package:false is not implemented! */
