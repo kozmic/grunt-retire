@@ -61,13 +61,23 @@ module.exports = function (grunt) {
 
       once('retire-js-repo', function() {
          filesSrc.forEach(function(filepath) {
-            if(grunt.file.exists(filepath) && filepath.match(/\.js$/) && grunt.file.isFile(filepath)) {
-               if(options.verbose) {
-                  grunt.log.writeln('Checking:', filepath);
-               }
+            if (!grunt.file.exists(filepath)) {
+               grunt.log.debug('Skipping directory file:', filepath);
+               return;               
+            }
+            if (!grunt.file.isFile(filepath)) {
+               grunt.log.debug('Not a file:', filepath);
+               return;               
+            }
+            if(options.verbose) {
+               grunt.log.writeln('Checking:', filepath);
+            }
+            if (filepath.match(/\.js$/)) {
                scanner.scanJsFile(filepath, jsRepo, options);
+            } else if (filepath.match(/\/bower.json$/)) {
+               scanner.scanBowerFile(filepath, jsRepo, options);
             } else {
-               grunt.log.debug('Skipping none Javascript file:', filepath);
+               grunt.log.debug('Unknown file type:', filepath);
             }
          }); 
          grunt.event.emit('retire-done');        
