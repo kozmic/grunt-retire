@@ -83,7 +83,7 @@ module.exports = function (grunt) {
          grunt.event.emit('retire-done');        
       });
 
-      once('retire-node-scan', function(filesSrc) {
+      on('retire-node-scan', function(filesSrc) {
          if (filesSrc.length === 0) {
             grunt.event.emit('retire-done');
             return;

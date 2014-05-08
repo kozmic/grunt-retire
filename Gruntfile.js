@@ -33,6 +33,6 @@ module.exports = function (grunt) {
 
 
    // By default, lint and retire.
-   grunt.registerTask('default', ['jshint', 'retire']);
+   grunt.registerTask('default', ['jshint', 'retire', 'jshint']);
 
 };
