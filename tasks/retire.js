@@ -25,11 +25,11 @@ module.exports = function (grunt) {
       // Merge task-specific and/or target-specific options with these defaults.
       var options = this.options({
          verbose: true,
-         packageOnly: true, 
+         packageOnly: false, 
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
          nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
          logger: grunt.log.writeln,
-         warnlogger: grunt.log.error,
+         warnlogger: grunt.log.error
       });
       var logger = log(options);
 
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
             if(options.verbose) {
                grunt.log.writeln('Checking:', filepath);
             }              
-            resolve.getNodeDependencies(filepath).on('done', function(dependencies) {
+            resolve.getNodeDependencies(filepath, options.packageOnly).on('done', function(dependencies) {
                scanner.scanDependencies(dependencies, nodeRepo, options);
                grunt.event.emit('retire-node-scan', filesSrc.slice(1));        
            });

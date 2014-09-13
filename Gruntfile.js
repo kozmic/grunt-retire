@@ -19,7 +19,7 @@ module.exports = function (grunt) {
          js: ['test-files/**/*.js', 'test-files/**/bower.json'],
          options: {
             verbose: true,
-            packageOnly: true, /* package:false is not implemented! */
+            packageOnly: true,
             jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
             nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json'            
          }

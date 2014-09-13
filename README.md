@@ -45,10 +45,11 @@ Example configuration below shows default option values and the correct syntax t
       options: {
          proxy: 'http://something.something:8080',
          verbose: true,
-         packageOnly: true, /* Note! package:false is not yet implemented in grunt plugin, only in node version of retire. */
+         packageOnly: true, 
          jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
          nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
-         ignore: 'documents,java'
+         ignore: 'documents,java',
+         ignorefile: '.retireignore' /** list of files to ignore **/
       }
     }
 ```
