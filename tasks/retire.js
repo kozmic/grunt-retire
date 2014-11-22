@@ -21,6 +21,7 @@ module.exports = function (grunt) {
       var vulnsFound = false;
       var filesSrc = this.filesSrc;
       var request = req;
+      var defaultIgnoreFile = '.retireignore';
       
       // Merge task-specific and/or target-specific options with these defaults.
       var options = this.options({
@@ -38,6 +39,20 @@ module.exports = function (grunt) {
       }
       var ignores = options.ignore ? options.ignore.split(',') : [];
       options.ignore = [];
+      if (!options.ignorefile && grunt.file.exists(defaultIgnoreFile)) {
+        options.ignorefile = defaultIgnoreFile;
+      }
+
+      if(options.ignorefile) {
+        if (!grunt.file.exists(options.ignorefile)) {
+          grunt.log.error('Error: Could not read ignore file: ' + options.ignorefile);
+          process.exit(1);
+        }
+        var lines = fs.readFileSync(options.ignorefile).toString().split(/\r\n|\n/g).filter(function(e) { return e !== ''; });
+        var ignored = lines.map(function(e) { return e[0] === '@' ? e.slice(1) : path.resolve(e); });
+        options.ignore = options.ignore.concat(ignored);
+      }
+
       ignores.forEach(function(e) { options.ignore.push(e); });
       logger.verbose("Ignoring " + JSON.stringify(options.ignore));
 
