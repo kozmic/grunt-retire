@@ -2,7 +2,6 @@
 
 [![Dependency Status](https://gemnasium.com/bekk/grunt-retire.png)](https://gemnasium.com/bekk/grunt-retire)
 [![NPM version](https://badge.fury.io/js/grunt-retire.png)](http://badge.fury.io/js/grunt-retire)
-
 ![Retire Status](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/bekk/grunt-retire/master/package.json)
 
 Grunt task for [retire.js](https://github.com/bekk/retire.js). Scanner detecting the use of JavaScript libraries with known vulnerabilities.
