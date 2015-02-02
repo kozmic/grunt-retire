@@ -4,7 +4,7 @@
 [![NPM version](https://badge.fury.io/js/grunt-retire.png)](http://badge.fury.io/js/grunt-retire)
 [![Retire Status](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/bekk/grunt-retire/master/package.json)](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/bekk/grunt-retire/master/package.json)
 
-Grunt task for [retire.js](https://github.com/bekk/retire.js). Scanner detecting the use of JavaScript libraries with known vulnerabilities.
+Grunt task for [retire.js](https://github.com/RetireJS/retire.js). Scanner detecting the use of JavaScript libraries with known vulnerabilities.
 
 
 
@@ -31,8 +31,8 @@ _Run this task with the `grunt retire` command._
 
 This task primarily delegates to [Retire][], so please consider the [Retire documentation][] as required reading for advanced configuration.
 
-[Retire]: https://github.com/bekk/retire.js
-[Retire documentation]: https://github.com/bekk/retire.js
+[Retire]: https://github.com/RetireJS/retire.js
+[Retire documentation]: https://github.com/RetireJS/retire.js
 
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
@@ -47,8 +47,8 @@ Example configuration below shows default option values and the correct syntax t
          proxy: 'http://something.something:8080',
          verbose: true,
          packageOnly: true, 
-         jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
-         nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
+         jsRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json',
+         nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json',
          ignore: 'documents,java',
          ignorefile: '.retireignore' /** list of files to ignore **/
       }
@@ -61,9 +61,9 @@ Example configuration below shows default option values and the correct syntax t
 
 `packageOnly: true/false`, default is `true`. Only scan only dependencies in package.json, skip dependencies to dependencies.
 
-`jsRepository: String`, default is `https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json`. JSON file which specifies where to retrieve Javascript vulnerability database.
+`jsRepository: String`, default is `https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json`. JSON file which specifies where to retrieve Javascript vulnerability database.
 
-`nodeRepository: String`, default is `https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json`. JSON file which specifies where to retrieve Node vulnerability database.
+`nodeRepository: String`, default is `https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json`. JSON file which specifies where to retrieve Node vulnerability database.
 
 `ignore: String`, default is empty. Paths to ignore when scanning for JavaScript files.
 
@@ -95,10 +95,10 @@ Running ```grunt retire``` will scan all dependencies specified under `dependenc
 ```
 ➜  grunt-retire git:(master) ✗ grunt retire
 Running "retire:jsPath" (retire) task
-JS repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json
+JS repository loaded from: https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json
 >> test-files/jquery-1.6.js
 >> ↳ jquery 1.6 has known vulnerabilities: http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4969
-Node repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json
+Node repository loaded from: https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json
 ```
 
 
@@ -107,8 +107,8 @@ Node repository loaded from: https://raw.github.com/bekk/retire.js/master/reposi
 ```
 ➜  grunt-retire git:(master) ✗ grunt retire
 Running "retire:jsPath" (retire) task
-JS repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json
-Node repository loaded from: https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json
+JS repository loaded from: https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json
+Node repository loaded from: https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json
 No vulnerabilities found.
 
 Done, without errors.

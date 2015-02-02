@@ -27,8 +27,8 @@ module.exports = function (grunt) {
       var options = this.options({
          verbose: true,
          packageOnly: false, 
-         jsRepository: 'https://raw.github.com/bekk/retire.js/master/repository/jsrepository.json',
-         nodeRepository: 'https://raw.github.com/bekk/retire.js/master/repository/npmrepository.json',
+         jsRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json',
+         nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json',
          logger: grunt.log.writeln,
          warnlogger: grunt.log.error
       });
