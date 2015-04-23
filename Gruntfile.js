@@ -20,6 +20,8 @@ module.exports = function (grunt) {
          options: {
             verbose: true,
             packageOnly: true,
+            //jsRepository: 'test-files/jsrepository.json',
+            //nodeRepository: 'test-files/npmrepository.json',
             jsRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json',
             nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json'            
          }

@@ -119,17 +119,30 @@ module.exports = function (grunt) {
       });
 
       once('retire-load-js', function() {
-         repo.loadrepository(options.jsRepository, options).on('done', function(repo) {
-            jsRepo = repo;
-            grunt.event.emit('retire-js-repo');
-         });
+        var done = function (repo) {
+             jsRepo = repo;
+             grunt.event.emit('retire-js-repo');
+        };
+
+        if (/^http[s]?:/.test(options.jsRepository)) {
+           repo.loadrepository(options.jsRepository, options).on('done', done);
+        } else {
+           repo.loadrepositoryFromFile(options.jsRepository, options).on('done', done);
+        }
+
       });
 
       once('retire-load-node', function() {
-         repo.loadrepository(options.nodeRepository, options).on('done', function(repo) {
+         var done = function(repo) {
             nodeRepo = repo;
             grunt.event.emit('retire-node-scan', filesSrc);
-         });
+         };
+
+         if (/^http[s]?:/.test(options.nodeRepository)) {
+            repo.loadrepository(options.nodeRepository, options).on('done', done);
+         } else {
+            repo.loadrepositoryFromFile(options.nodeRepository, options).on('done', done);
+         }
       });
 
       once('retire-done', function() {
