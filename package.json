@@ -22,13 +22,15 @@
     "test": "grunt test"
   },
   "dependencies" : {
-    "grunt"   : "~0.4.x",
-    "grunt-contrib-jshint"   : "~0.11.x",
-    "grunt-contrib-clean"    : "~0.6.x",
-    "grunt-contrib-nodeunit" : "0.4.x", 
     "retire"  : "~1.0.x",
     "async"   : "~0.9.x",
     "request" : "~2.55.x"
+  },
+  "devDependencies" : {
+    "grunt"   : "~0.4.x",
+    "grunt-contrib-jshint"   : "~0.11.x",
+    "grunt-contrib-clean"    : "~0.6.x",
+    "grunt-contrib-nodeunit" : "0.4.x"
   },
   "peerDependencies": {
     "grunt": "~0.4.x"
