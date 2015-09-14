@@ -49,6 +49,7 @@ Example configuration below shows default option values and the correct syntax t
          packageOnly: true, 
          jsRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json',
          nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json',
+         outputFile: './retire-output.json',
          ignore: 'documents,java',
          ignorefile: '.retireignore' /** list of files to ignore **/
       }
@@ -64,6 +65,8 @@ Example configuration below shows default option values and the correct syntax t
 `jsRepository: String`, default is `https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json`. JSON file which specifies where to retrieve Javascript vulnerability database.
 
 `nodeRepository: String`, default is `https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json`. JSON file which specifies where to retrieve Node vulnerability database.
+
+`outputFile: String`, default is `false`. Path to creation of output file report in JSON format.
 
 `ignore: String`, default is empty. Paths to ignore when scanning for JavaScript files.
 
