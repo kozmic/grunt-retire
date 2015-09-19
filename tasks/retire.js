@@ -22,7 +22,26 @@ module.exports = function (grunt) {
       var filesSrc = this.filesSrc;
       var request = req;
       var defaultIgnoreFile = '.retireignore';
-      
+      var output = {};
+      var scanedFile;
+
+      function taskVulnLogger(msg) {
+         var keyValue;
+         keyValue = scanedFile.slice(scanedFile.lastIndexOf('/') + 1);
+
+         if (keyValue.indexOf('.') > -1) {
+            keyValue = 'js.' + keyValue.slice(0, keyValue.indexOf('.'));
+         }
+         else {
+            keyValue = 'node.' + keyValue;
+         }
+         if (!output.hasOwnProperty(keyValue)) {
+            output[keyValue] = 1;
+         }
+         output[keyValue] = output[keyValue] + 1;
+         return grunt.log.error(msg);
+      }
+
       // Merge task-specific and/or target-specific options with these defaults.
       var options = this.options({
          verbose: true,
@@ -30,7 +49,8 @@ module.exports = function (grunt) {
          jsRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json',
          nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json',
          logger: grunt.log.writeln,
-         warnlogger: grunt.log.error
+         warnlogger: taskVulnLogger,
+         outputFile: false
       });
       var logger = log(options);
 
@@ -84,6 +104,7 @@ module.exports = function (grunt) {
                grunt.log.debug('Not a file:', filepath);
                return;               
             }
+            scanedFile = filepath;
             if(options.verbose) {
                grunt.log.writeln('Checking:', filepath);
             }
@@ -105,6 +126,7 @@ module.exports = function (grunt) {
          }
          var filepath = filesSrc[0];
          if(grunt.file.exists(filepath + '/package.json')) {
+            scanedFile = filepath.slice( 0, filepath.lastIndexOf('/') );
             if(options.verbose) {
                grunt.log.writeln('Checking:', filepath);
             }              
@@ -152,7 +174,9 @@ module.exports = function (grunt) {
          events.forEach(function(e) {
             grunt.event.removeAllListeners(e);
          });
-
+         if (options.outputFile) {
+            grunt.file.write(options.outputFile, JSON.stringify(output));
+         }
          done(!vulnsFound);
       });
 
