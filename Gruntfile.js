@@ -23,7 +23,7 @@ module.exports = function (grunt) {
             //jsRepository: 'test-files/jsrepository.json',
             //nodeRepository: 'test-files/npmrepository.json',
             jsRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/jsrepository.json',
-            nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json'            
+            nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json'
          }
       }
    });
@@ -35,6 +35,6 @@ module.exports = function (grunt) {
 
 
    // By default, lint and retire.
-   grunt.registerTask('default', ['jshint', 'retire', 'jshint']);
+   grunt.registerTask('default', ['jshint', 'retire']);
 
 };
