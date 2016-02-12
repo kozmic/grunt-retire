@@ -119,7 +119,7 @@ Done, without errors.
 
 
 ## Release History
-
+ * 2016-02-12     v0.3.11  Upgraded dependencies
  * 2013-11-12   v0.1.15  Upgrading dependencies. Proxy support
  * 2013-10-30   v0.1.12  Upgrade to retire v0.1.12. js and node defined as targets.
  * 2013-10-30   v0.1.0   First version.
