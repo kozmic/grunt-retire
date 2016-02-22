@@ -21,19 +21,19 @@
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies" : {
-    "retire"  : "~1.1.x",
-    "async"   : "~1.5.x",
-    "request" : "~2.67.x"
+  "dependencies": {
+    "retire": "~1.1.x",
+    "async": "~1.5.x",
+    "request": "~2.67.x"
   },
-  "devDependencies" : {
-    "grunt"   : "~0.4.x",
-    "grunt-contrib-jshint"   : "~0.11.x",
-    "grunt-contrib-clean"    : "~0.7.x",
-    "grunt-contrib-nodeunit" : "0.4.x"
+  "devDependencies": {
+    "grunt": "~0.4.x",
+    "grunt-contrib-jshint": "~0.11.x",
+    "grunt-contrib-clean": "~0.7.x",
+    "grunt-contrib-nodeunit": "0.4.x"
   },
   "peerDependencies": {
-    "grunt": "~0.4.x"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
@@ -43,11 +43,11 @@
   "contributors": [
     {
       "name": "Alexander Vassbotn Røyne-Helgesen",
-      "email" : "alexander@phun-ky.net"
+      "email": "alexander@phun-ky.net"
     },
     {
       "name": "Erlend Oftedal",
-      "email" : "erlend@oftedal.no"
+      "email": "erlend@oftedal.no"
     }
   ]
 }
