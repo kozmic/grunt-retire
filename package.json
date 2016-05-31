@@ -7,6 +7,7 @@
     "name": "Ståle Pettersen",
     "email": "staale@gmail.com"
   },
+  "license" : "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/bekk/grunt-retire.git"
