@@ -51,7 +51,8 @@ Example configuration below shows default option values and the correct syntax t
          nodeRepository: 'https://raw.github.com/RetireJS/retire.js/master/repository/npmrepository.json',
          outputFile: './retire-output.json',
          ignore: 'documents,java',
-         ignorefile: '.retireignore' /** list of files to ignore **/
+         /** list of files to ignore **/
+         ignorefile: '.retireignore' //or '.retireignore.json'
       }
     }
 ```
@@ -106,7 +107,7 @@ Node repository loaded from: https://raw.github.com/RetireJS/retire.js/master/re
 
 
 
-## Example output when no vulnerabilities is found
+## Example output when no vulnerabilities are found
 ```
 ➜  grunt-retire git:(master) ✗ grunt retire
 Running "retire:jsPath" (retire) task
