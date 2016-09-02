@@ -59,9 +59,9 @@ module.exports = function (grunt) {
       }
       var ignores = options.ignore ? options.ignore.split(',') : [];
       options.ignore = { paths : [], descriptors: [] };
-      var defaultIgnoreFile = defaultIgnoreFiles.find(function (x) {
+      var defaultIgnoreFile = defaultIgnoreFiles.filter(function (x) {
          return fs.existsSync(x);
-      });
+      })[0];
 
       if (!options.ignorefile && defaultIgnoreFile) {
         options.ignorefile = defaultIgnoreFile;
