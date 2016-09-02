@@ -120,7 +120,7 @@ Done, without errors.
 
 
 ## Release History
- * 2016-09-02   v1.0.3   Compatible again with Node 0.10.x. v1.0.2 broke compatibility because of find().
+ * 2016-09-02   v1.0.3   Compatible again with Node 0.10.x. v1.0.2 broke compatibility because of `find()`.
  * 2016-08-29	v1.0.2   Uses retire 1.2.x, which supports ignoring specific vulnerabilities through `.retireignore.json`.
  * 2016-05-31	v1.0.0   Upgraded dependency for Grunt to 1.0.0 to get remove graceful-js warning. Requires Grunt 1.0.x or newer.
  * 2016-02-22	v0.3.12  Added support for Grunt 1.0.0.
