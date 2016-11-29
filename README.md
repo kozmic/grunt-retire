@@ -1,8 +1,7 @@
 # grunt-retire
 
-[![Dependency Status](https://gemnasium.com/bekk/grunt-retire.png)](https://gemnasium.com/bekk/grunt-retire)
 [![NPM version](https://badge.fury.io/js/grunt-retire.png)](http://badge.fury.io/js/grunt-retire)
-[![Retire Status](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/bekk/grunt-retire/master/package.json)](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/bekk/grunt-retire/master/package.json)
+[![Retire Status](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/RetireJS/grunt-retire/master/package.json)](http://retire.insecurity.today/api/image?uri=https://raw.githubusercontent.com/RetireJS/grunt-retire/master/package.json)
 
 Grunt task for [retire.js](https://github.com/RetireJS/retire.js). Scanner detecting the use of JavaScript libraries with known vulnerabilities.
 
@@ -120,11 +119,12 @@ Done, without errors.
 
 
 ## Release History
- * 2016-09-02   v1.0.3   Compatible again with Node 0.10.x. v1.0.2 broke compatibility because of `find()`.
- * 2016-08-29	v1.0.2   Uses retire 1.2.x, which supports ignoring specific vulnerabilities through `.retireignore.json`.
- * 2016-05-31	v1.0.0   Upgraded dependency for Grunt to 1.0.0 to get remove graceful-js warning. Requires Grunt 1.0.x or newer.
- * 2016-02-22	v0.3.12  Added support for Grunt 1.0.0.
- * 2016-02-12	v0.3.11  Upgraded dependencies
- * 2013-11-12   v0.1.15  Upgrading dependencies. Proxy support
- * 2013-10-30   v0.1.12  Upgrade to retire v0.1.12. js and node defined as targets.
- * 2013-10-30   v0.1.0   First version.
+ * 2016-11-29   1.0.5   Removed dependency `reques` in package.json. Moved repository from `bekk` to `RetireJS`.
+ * 2016-09-02   1.0.3   Compatible again with Node 0.10.x. v1.0.2 broke compatibility because of `find()`.
+ * 2016-08-29   1.0.2   Uses retire 1.2.x, which supports ignoring specific vulnerabilities through `.retireignore.json`.
+ * 2016-05-31   1.0.0   Upgraded dependency for Grunt to 1.0.0 to get remove graceful-js warning. Requires Grunt 1.0.x or newer.
+ * 2016-02-22   0.3.12   Added support for Grunt 1.0.0.
+ * 2016-02-12   0.3.11   Upgraded dependencies.
+ * 2013-11-12   0.1.15   Upgrading dependencies. Proxy support.
+ * 2013-10-30   0.1.12   Upgrade to retire v0.1.12. js and node defined as targets.
+ * 2013-10-30   0.1.0   First version.
