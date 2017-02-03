@@ -119,6 +119,8 @@ Done, without errors.
 
 
 ## Release History
+
+ * 2017-02-03   1.0.7   Added `.npmignore` so we don't publish `test-files` directory. 
  * 2016-12-13   1.0.6   Added `request@2.x` as a dependency so we are compatible with npm@2.x.
  * 2016-11-29   1.0.5   Removed dependency `request` in package.json. Moved repository from `bekk` to `RetireJS`.
  * 2016-09-02   1.0.3   Compatible again with Node 0.10.x. v1.0.2 broke compatibility because of `find()`.
